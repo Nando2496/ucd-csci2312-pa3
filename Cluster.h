@@ -7,7 +7,7 @@
 #define CLUSTERING_CLUSTER_H
 
 #include "Point.h"
-
+#include <assert.h>
 namespace Clustering {
 
     typedef struct LNode *LNodePtr;
@@ -67,7 +67,7 @@ namespace Clustering {
         Cluster(unsigned int d);
 
         // The big three: cpy ctor, overloaded operator=, dtor
-        Cluster(const Cluster &);
+        Cluster(const Cluster &cluster);
         Cluster &operator=(const Cluster &);
         ~Cluster();
 

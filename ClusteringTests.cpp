@@ -214,8 +214,8 @@ void test_point_getsetelem(ErrorContext &ec, unsigned int numRuns) {
             pass = true;
             for (int i = 0; i < 50; i ++) {
                 pass = pass &&
-                        (p.getValue(i) == 0.0) &&
-                        (p[i] == 0.0);
+                       (p.getValue(i) == 0.0) &&
+                       (p[i] == 0.0);
             }
             ec.result(pass);
         }
@@ -233,8 +233,8 @@ void test_point_getsetelem(ErrorContext &ec, unsigned int numRuns) {
             pass = true;
             for (int i = 0; i < 20; i ++)
                 pass = pass &&
-                        (p.getValue(i) == (13.43 * i * i + 4.567 * i + 1.234567)) &&
-                        (p[i] == (13.43 * i * i + 4.567 * i + 1.234567));
+                       (p.getValue(i) == (13.43 * i * i + 4.567 * i + 1.234567)) &&
+                       (p[i] == (13.43 * i * i + 4.567 * i + 1.234567));
             ec.result(pass);
         }
 
@@ -1654,7 +1654,7 @@ void test_cluster_subscript(ErrorContext &ec, unsigned int numRuns) {
             pass = true;
 
             for (int i = 0; i < 200; i++) {
-//                c[i] = Point(100); // c[i] read-only and not assignable
+                // c[i] = Point(100); // c[i] read-only and not assignable
             }
 
             ec.result(pass);
@@ -2518,7 +2518,7 @@ void test_cluster_centroid(ErrorContext &ec, unsigned int numRuns) { // TODO imp
             c1 -= c2;
 
             pass = c1.centroid.isValid() && c2.centroid.isValid() &&
-                    (c1.centroid.equal(c3.centroid.get()));
+                   (c1.centroid.equal(c3.centroid.get()));
 
             ec.result(pass);
         }
@@ -2749,8 +2749,8 @@ void test_cluster_initselection(ErrorContext &ec, unsigned int numRuns) {
             ec.result(pass);
         }
 
-//        ec.DESC("k=13 < size=15000 of Cluster - COMMENTED OUT");
-//        pass = true;
+        // ec.DESC("k=13 < size=15000 of Cluster - COMMENTED OUT");
+        // pass = true;
         ec.DESC("k=13 << Cluster size=15000");
 
         {
@@ -2779,7 +2779,7 @@ void test_cluster_initselection(ErrorContext &ec, unsigned int numRuns) {
 
             ec.result(pass);
         }
-//        ec.result(pass);
+        // ec.result(pass);
     }
 }
 
@@ -2868,7 +2868,9 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
                        (c[0].getId() + 1 == c[1].getId()); // two points didn't load, but no id-s wasted
 
                 if (! pass)
+                {
                     std::cout << c[0].getId() << ' ' << c[1].getId() << std::endl;
+                }
             } else {
                 pass = false;
             }
@@ -3223,7 +3225,7 @@ void test_kmeans_toofewpoints(ErrorContext &ec, unsigned int numRuns) {
             bool parse_success;
             pass = pass && (parse_success = cc.parse_and_analyze()) &&
                    (cc.get_num_clusters() < 2520) &&    // this is the only meaningful test for the number of clusters
-                                                        // the exact number will vary with implementation
+                   // the exact number will vary with implementation
                    (cc.get_num_points() == 2499);
 
             ec.result(pass);
